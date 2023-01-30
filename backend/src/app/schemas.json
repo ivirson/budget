@@ -1,0 +1,145 @@
+{
+  "User": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string"
+      },
+      "avatar": {
+        "type": "string"
+      }
+    }
+  },
+  "NewUser": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string"
+      },
+      "password": {
+        "type": "string"
+      }
+    }
+  },
+  "UserLogin": {
+    "type": "object",
+    "properties": {
+      "email": {
+        "type": "string"
+      },
+      "password": {
+        "type": "string"
+      }
+    }
+  },
+  "UserToken": {
+    "type": "object",
+    "properties": {
+      "user": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "token": {
+        "type": "string"
+      }
+    }
+  },
+  "ForgotPassword": {
+    "type": "object",
+    "properties": {
+      "email": {
+        "type": "string"
+      }
+    }
+  },
+  "ResetPassword": {
+    "type": "object",
+    "properties": {
+      "password": {
+        "type": "string"
+      },
+      "token": {
+        "type": "string"
+      }
+    }
+  },
+  "UserAvatar": {
+    "type": "object",
+    "properties": {
+      "avatar": {
+        "type": "file"
+      }
+    }
+  },
+  "CreditCard": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "alias": {
+        "type": "string"
+      },
+      "dueDate": {
+        "type": "string"
+      },
+      "invoiceClosingDate": {
+        "type": "string"
+      },
+      "limit": {
+        "type": "number"
+      },
+      "availableLimit": {
+        "type": "number"
+      },
+      "flag": {
+        "type": "string"
+      },
+      "color": {
+        "type": "string"
+      }
+    }
+  },
+  "NewCreditCard": {
+    "type": "object",
+    "properties": {
+      "alias": {
+        "type": "string"
+      },
+      "dueDate": {
+        "type": "string"
+      },
+      "invoiceClosingDate": {
+        "type": "string"
+      },
+      "limit": {
+        "type": "number"
+      },
+      "availableLimit": {
+        "type": "number"
+      },
+      "flag": {
+        "type": "string"
+      },
+      "color": {
+        "type": "string"
+      }
+    }
+  }
+}
