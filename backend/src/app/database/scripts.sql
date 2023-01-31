@@ -8,3 +8,5 @@ SELECT * FROM users;
 
 
 UPDATE users SET avatar = null WHERE id = "f7cddfb1-d55e-45bc-bde0-14041142301c"
+
+-- DROP TABLE creditCards
