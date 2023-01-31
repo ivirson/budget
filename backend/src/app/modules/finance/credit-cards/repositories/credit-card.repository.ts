@@ -1,21 +1,38 @@
 import CreditCard from "../models/credit-card.model";
 
 export default class CreditCardsRepository {
-  public async findAll(): Promise<CreditCard[]> {
-    return await CreditCard.findAll();
+  public async findAll(userId: string): Promise<CreditCard[]> {
+    return await CreditCard.findAll({
+      where: {
+        userId,
+      },
+    });
   }
 
-  public async findById(id: string): Promise<CreditCard | null> {
-    return await CreditCard.findByPk(id);
+  public async findById(
+    userId: string,
+    id: string
+  ): Promise<CreditCard | null> {
+    return await CreditCard.findOne({
+      where: {
+        userId,
+        id,
+      },
+    });
   }
 
   public async save(creditCard: CreditCard): Promise<CreditCard> {
     return await CreditCard.create(creditCard);
   }
 
-  public async update(id: string, creditCard: any): Promise<CreditCard | null> {
+  public async update(
+    userId: string,
+    id: string,
+    creditCard: any
+  ): Promise<CreditCard | null> {
     await CreditCard.update(creditCard, {
       where: {
+        userId,
         id,
       },
     });
@@ -23,9 +40,9 @@ export default class CreditCardsRepository {
     return await CreditCard.findByPk(id);
   }
 
-  public async delete(id: string): Promise<void> {
+  public async delete(userId: string, id: string): Promise<void> {
     await CreditCard.destroy({
-      where: { id },
+      where: { userId, id },
     });
   }
 }

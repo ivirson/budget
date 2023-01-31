@@ -113,6 +113,9 @@
       },
       "color": {
         "type": "string"
+      },
+      "userId": {
+        "type": "string"
       }
     }
   },
@@ -138,6 +141,9 @@
         "type": "string"
       },
       "color": {
+        "type": "string"
+      },
+      "userId": {
         "type": "string"
       }
     }

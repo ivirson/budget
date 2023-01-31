@@ -2,13 +2,13 @@ import { Router } from "express";
 import verifyToken from "../../../../middlewares/verify-token";
 import CreditCardsController from "../controllers/credit-cards.controller";
 
-const creditCardsRouter = Router();
+const creditCardsRouter = Router({ mergeParams: true });
 const creditCardsController = new CreditCardsController();
 
 creditCardsRouter.get("/", verifyToken, creditCardsController.findAll);
-creditCardsRouter.get("/:id", verifyToken, creditCardsController.findById);
+creditCardsRouter.get("/:cardId", verifyToken, creditCardsController.findById);
 creditCardsRouter.post("/", verifyToken, creditCardsController.save);
-creditCardsRouter.put("/:id", verifyToken, creditCardsController.update);
-creditCardsRouter.delete("/:id", verifyToken, creditCardsController.delete);
+creditCardsRouter.put("/:cardId", verifyToken, creditCardsController.update);
+creditCardsRouter.delete("/:cardId", verifyToken, creditCardsController.delete);
 
 export default creditCardsRouter;

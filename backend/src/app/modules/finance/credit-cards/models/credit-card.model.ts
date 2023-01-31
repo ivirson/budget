@@ -4,6 +4,7 @@ import {
   InferAttributes,
   InferCreationAttributes,
   Model,
+  NUMBER,
 } from "sequelize";
 import database from "../../../../database/db";
 
@@ -16,9 +17,10 @@ export default class CreditCard extends Model<
   declare dueDate: Date;
   declare invoiceClosingDate: Date;
   declare limit: number;
-  declare availableLimit: number;
+  declare availableLimit?: number;
   declare flag: string;
   declare color: string;
+  declare userId: string;
   declare createdAt?: CreationOptional<Date>;
   declare updatedAt?: CreationOptional<Date>;
 }
@@ -36,11 +38,11 @@ CreditCard.init(
       allowNull: false,
     },
     dueDate: {
-      type: DataTypes.DATE,
+      type: NUMBER,
       allowNull: false,
     },
     invoiceClosingDate: {
-      type: DataTypes.DATE,
+      type: NUMBER,
       allowNull: false,
     },
     limit: {
@@ -50,6 +52,10 @@ CreditCard.init(
     availableLimit: DataTypes.NUMBER,
     flag: DataTypes.STRING,
     color: DataTypes.STRING,
+    userId: {
+      type: DataTypes.UUID,
+      allowNull: false,
+    },
   },
   {
     sequelize: database,

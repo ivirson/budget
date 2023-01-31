@@ -8,7 +8,7 @@ const creditCardsService = new CreditCardsService();
 export default class CreditCardsController {
   /**
    * @swagger
-   * /users/{:id}/credit-cards:
+   * /users/{:userId}/credit-cards:
    *  get:
    *    tags:
    *      - CreditCard
@@ -28,23 +28,17 @@ export default class CreditCardsController {
     response: Response
   ): Promise<Response> {
     try {
-      const creditCards = await creditCardsService.findAll();
+      const { userId } = request.params;
+      const creditCards = await creditCardsService.findAll(userId);
       return response.status(200).json(creditCards);
-    } catch (error: Error | any) {
-      return response
-        .status(500)
-        .json(
-          new AppError(
-            "There was an error querying the data.",
-            error.errors ? error.errors.map((e: Error) => e.message) : error
-          )
-        );
+    } catch (error: AppError | any) {
+      return response.status(error.statusCode || 500).json(error);
     }
   }
 
   /**
    * @swagger
-   * /users/{:id}/credit-cards/{:id}:
+   * /users/{:userId}/credit-cards/{:cardId}:
    *  get:
    *    tags:
    *      - CreditCard
@@ -70,32 +64,18 @@ export default class CreditCardsController {
     request: Request,
     response: Response
   ): Promise<Response> {
-    const { id } = request.params;
     try {
-      const creditCard = await creditCardsService.findById(id);
-
-      if (!creditCard) {
-        return response
-          .status(404)
-          .json(new AppError("Credit card not found."));
-      }
-
+      const { userId, cardId } = request.params;
+      const creditCard = await creditCardsService.findById(userId, cardId);
       return response.status(200).json(creditCard);
-    } catch (error: Error | any) {
-      return response
-        .status(500)
-        .json(
-          new AppError(
-            "There was an error querying the data.",
-            error.errors ? error.errors.map((e: Error) => e.message) : error
-          )
-        );
+    } catch (error: AppError | any) {
+      return response.status(error.statusCode || 500).json(error);
     }
   }
 
   /**
    * @swagger
-   * /users/{:id}/credit-cards:
+   * /users/{:userId}/credit-cards:
    *   post:
    *     tags:
    *       - CreditCard
@@ -115,26 +95,22 @@ export default class CreditCardsController {
    *               $ref: '#/components/schemas/CreditCard'
    */
   public async save(request: Request, response: Response): Promise<Response> {
-    const creditCard = request.body;
-
     try {
-      const createdCreditCard = await creditCardsService.save(creditCard);
+      const { userId } = request.params;
+      const creditCard = request.body;
+      const createdCreditCard = await creditCardsService.save(
+        userId,
+        creditCard
+      );
       return response.status(201).json(createdCreditCard);
-    } catch (error: Error | any) {
-      return response
-        .status(500)
-        .json(
-          new AppError(
-            "There was an error saving the data.",
-            error.errors ? error.errors.map((e: Error) => e.message) : error
-          )
-        );
+    } catch (error: AppError | any) {
+      return response.status(error.statusCode || 500).json(error);
     }
   }
 
   /**
    * @swagger
-   * /users/{:id}/credit-cards/{:id}:
+   * /users/{:userId}/credit-cards/{:cardId}:
    *   put:
    *     tags:
    *       - CreditCard
@@ -163,35 +139,23 @@ export default class CreditCardsController {
    *         description: CreditCard not found
    */
   public async update(request: Request, response: Response): Promise<Response> {
-    const { id } = request.params;
-    const creditCard = request.body;
-
     try {
-      const creditCardExist = await creditCardsService.findById(id);
-
-      if (!creditCardExist) {
-        return response
-          .status(404)
-          .json(new AppError("Credit Card not found."));
-      }
-
-      const updatedCreditCard = await creditCardsService.update(id, creditCard);
+      const { userId, cardId } = request.params;
+      const creditCard = request.body;
+      const updatedCreditCard = await creditCardsService.update(
+        userId,
+        cardId,
+        creditCard
+      );
       return response.status(200).json(updatedCreditCard);
-    } catch (error: Error | any) {
-      return response
-        .status(500)
-        .json(
-          new AppError(
-            "There was an error updating the data.",
-            error.errors ? error.errors.map((e: Error) => e.message) : error
-          )
-        );
+    } catch (error: AppError | any) {
+      return response.status(error.statusCode || 500).json(error);
     }
   }
 
   /**
    * @swagger
-   * /users/{:id}/credit-cards/{:id}:
+   * /users/{:userId}/credit-cards/{:cardId}:
    *   delete:
    *     tags:
    *       - CreditCard
@@ -208,20 +172,13 @@ export default class CreditCardsController {
    *         description: Deleted
    */
   public async delete(request: Request, response: Response): Promise<Response> {
-    const { id } = request.params;
+    const { userId, cardId } = request.params;
 
     try {
-      await creditCardsService.delete(id);
+      await creditCardsService.delete(userId, cardId);
       return response.status(200).json();
-    } catch (error: Error | any) {
-      return response
-        .status(500)
-        .json(
-          new AppError(
-            "There was an error removing the data.",
-            error.errors ? error.errors.map((e: Error) => e.message) : error
-          )
-        );
+    } catch (error: AppError | any) {
+      return response.status(error.statusCode || 500).json(error);
     }
   }
 }
