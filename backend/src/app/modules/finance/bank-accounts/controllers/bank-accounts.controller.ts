@@ -1,26 +1,26 @@
 import { Request, Response } from "express";
 import { AppError } from "../../../../shared/models/error.model";
-import CreditCardsService from "../services/credit-cards.service";
+import BankAccountsService from "../services/bank-accounts.service";
 
-const creditCardsService = new CreditCardsService();
+const bankAccountsService = new BankAccountsService();
 
-export default class CreditCardsController {
+export default class BankAccountsController {
   /**
    * @swagger
-   * /users/{:userId}/credit-cards:
+   * /users/{:userId}/bank-accounts:
    *  get:
    *    tags:
-   *      - CreditCard
-   *    summary: Get credit cards from user
+   *      - BankAccount
+   *    summary: Get bank accounts from user
    *    responses:
    *      200:
-   *        description: Returns all credit cards from a user
+   *        description: Returns all bank accounts from a user
    *        content:
    *          application/json:
    *            schema:
    *              type: array
    *              items:
-   *                $ref: '#/components/schemas/CreditCard'
+   *                $ref: '#/components/schemas/BankAccount'
    */
   public async findAll(
     request: Request,
@@ -28,8 +28,8 @@ export default class CreditCardsController {
   ): Promise<Response> {
     try {
       const { userId } = request.params;
-      const creditCards = await creditCardsService.findAll(userId);
-      return response.status(200).json(creditCards);
+      const bankAccounts = await bankAccountsService.findAll(userId);
+      return response.status(200).json(bankAccounts);
     } catch (error: AppError | any) {
       return response.status(error.statusCode || 500).json(error);
     }
@@ -37,36 +37,39 @@ export default class CreditCardsController {
 
   /**
    * @swagger
-   * /users/{:userId}/credit-cards/{:cardId}:
+   * /users/{:userId}/bank-accounts/{:bankAccountId}:
    *  get:
    *    tags:
-   *      - CreditCard
-   *    summary: Get creditCard by id
+   *      - BankAccount
+   *    summary: Get bank account by id
    *    parameters:
    *       - in: path
    *         name: id
    *         required: true
-   *         description: Numeric ID of the creditCard to retrieve.
+   *         description: Numeric ID of the bank account to retrieve.
    *         schema:
    *           type: integer
    *    responses:
    *      200:
-   *        description: Returns a creditCard
+   *        description: Returns a bank account
    *        content:
    *          application/json:
    *            schema:
-   *              $ref: '#/components/schemas/CreditCard'
+   *              $ref: '#/components/schemas/BankAccount'
    *      404:
-   *        description: Credit Card not found
+   *        description: Bank Account not found
    */
   public async findById(
     request: Request,
     response: Response
   ): Promise<Response> {
     try {
-      const { userId, cardId } = request.params;
-      const creditCard = await creditCardsService.findById(userId, cardId);
-      return response.status(200).json(creditCard);
+      const { userId, bankAccountId } = request.params;
+      const bankAccount = await bankAccountsService.findById(
+        userId,
+        bankAccountId
+      );
+      return response.status(200).json(bankAccount);
     } catch (error: AppError | any) {
       return response.status(error.statusCode || 500).json(error);
     }
@@ -74,34 +77,34 @@ export default class CreditCardsController {
 
   /**
    * @swagger
-   * /users/{:userId}/credit-cards:
+   * /users/{:userId}/bank-accounts:
    *   post:
    *     tags:
-   *       - CreditCard
-   *     summary: Save creditCard
+   *       - BankAccount
+   *     summary: Save bank account
    *     requestBody:
    *       required: true
    *       content:
    *         application/json:
    *           schema:
-   *             $ref: '#/components/schemas/NewCreditCard'
+   *             $ref: '#/components/schemas/NewBankAccount'
    *     responses:
    *       201:
    *         description: Created
    *         content:
    *           application/json:
    *             schema:
-   *               $ref: '#/components/schemas/CreditCard'
+   *               $ref: '#/components/schemas/BankAccount'
    */
   public async save(request: Request, response: Response): Promise<Response> {
     try {
       const { userId } = request.params;
-      const creditCard = request.body;
-      const createdCreditCard = await creditCardsService.save(
+      const bankAccount = request.body;
+      const createdBankAccount = await bankAccountsService.save(
         userId,
-        creditCard
+        bankAccount
       );
-      return response.status(201).json(createdCreditCard);
+      return response.status(201).json(createdBankAccount);
     } catch (error: AppError | any) {
       return response.status(error.statusCode || 500).json(error);
     }
@@ -109,16 +112,16 @@ export default class CreditCardsController {
 
   /**
    * @swagger
-   * /users/{:userId}/credit-cards/{:cardId}:
+   * /users/{:userId}/bank-accounts/{:bankAccountId}:
    *   put:
    *     tags:
-   *       - CreditCard
-   *     summary: Update creditCard
+   *       - BankAccount
+   *     summary: Update bank account
    *     parameters:
    *       - in: path
    *         name: id
    *         required: true
-   *         description: Numeric ID of the creditCard to update.
+   *         description: Numeric ID of the bank account to update.
    *         schema:
    *           type: integer
    *     requestBody:
@@ -126,27 +129,27 @@ export default class CreditCardsController {
    *       content:
    *         application/json:
    *           schema:
-   *             $ref: '#/components/schemas/CreditCard'
+   *             $ref: '#/components/schemas/BankAccount'
    *     responses:
    *       200:
    *         description: Updated
    *         content:
    *           application/json:
    *             schema:
-   *               $ref: '#/components/schemas/CreditCard'
+   *               $ref: '#/components/schemas/BankAccount'
    *       404:
-   *         description: CreditCard not found
+   *         description: BankAccount not found
    */
   public async update(request: Request, response: Response): Promise<Response> {
     try {
-      const { userId, cardId } = request.params;
-      const creditCard = request.body;
-      const updatedCreditCard = await creditCardsService.update(
+      const { userId, bankAccountId } = request.params;
+      const bankAccount = request.body;
+      const updatedBankAccount = await bankAccountsService.update(
         userId,
-        cardId,
-        creditCard
+        bankAccountId,
+        bankAccount
       );
-      return response.status(200).json(updatedCreditCard);
+      return response.status(200).json(updatedBankAccount);
     } catch (error: AppError | any) {
       return response.status(error.statusCode || 500).json(error);
     }
@@ -154,16 +157,16 @@ export default class CreditCardsController {
 
   /**
    * @swagger
-   * /users/{:userId}/credit-cards/{:cardId}:
+   * /users/{:userId}/bank-accounts/{:bankAccountId}:
    *   delete:
    *     tags:
-   *       - CreditCard
-   *     summary: Delete creditCard
+   *       - BankAccount
+   *     summary: Delete bank account
    *     parameters:
    *       - in: path
    *         name: id
    *         required: true
-   *         description: Numeric ID of the creditCard to delete.
+   *         description: Numeric ID of the bank account to delete.
    *         schema:
    *           type: integer
    *     responses:
@@ -171,10 +174,10 @@ export default class CreditCardsController {
    *         description: Deleted
    */
   public async delete(request: Request, response: Response): Promise<Response> {
-    const { userId, cardId } = request.params;
+    const { userId, bankAccountId } = request.params;
 
     try {
-      await creditCardsService.delete(userId, cardId);
+      await bankAccountsService.delete(userId, bankAccountId);
       return response.status(200).json();
     } catch (error: AppError | any) {
       return response.status(error.statusCode || 500).json(error);

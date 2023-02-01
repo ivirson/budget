@@ -147,5 +147,42 @@
         "type": "string"
       }
     }
+  },
+  "BankAccount": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "alias": {
+        "type": "string"
+      },
+      "bank": {
+        "type": "string"
+      },
+      "balance": {
+        "type": "number"
+      },
+      "userId": {
+        "type": "string"
+      }
+    }
+  },
+  "NewBankAccount": {
+    "type": "object",
+    "properties": {
+      "alias": {
+        "type": "string"
+      },
+      "bank": {
+        "type": "string"
+      },
+      "balance": {
+        "type": "number"
+      },
+      "userId": {
+        "type": "string"
+      }
+    }
   }
 }
