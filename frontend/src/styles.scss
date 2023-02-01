@@ -1,0 +1,16 @@
+@import './assets/themes/css/theme.css';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.theme-light {
+  color-scheme: light;
+}
+
+.theme-dark {
+  color-scheme: dark;
+}
+
+.mat-mdc-unelevated-button.mat-mdc-button-base {
+  height: 3rem;
+}

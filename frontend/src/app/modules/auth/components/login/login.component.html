@@ -1,0 +1,21 @@
+<div class="container-fluid primary d-flex justify-content-center align-items-center">
+  <div class="card p-5">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>E-mail</mat-label>
+          <input matInput formControlName="email">
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Senha</mat-label>
+          <input matInput formControlName="password">
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <button type="submit" mat-flat-button color="primary">Entrar</button>
+      </div>
+</form>
+  </div>
+</div>
