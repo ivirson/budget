@@ -1,14 +1,12 @@
-@import './assets/themes/css/theme.css';
+@import "./assets/themes/css/colors.module.scss";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.theme-light {
-  color-scheme: light;
+html,
+body {
+  height: 100%;
 }
-
-.theme-dark {
-  color-scheme: dark;
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 .mat-mdc-unelevated-button.mat-mdc-button-base {

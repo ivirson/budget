@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { first } from 'rxjs';
 import { UserToken } from '../../models/user-token.model';
 import { AuthService } from '../../services/auth.service';
@@ -12,7 +13,7 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent implements OnInit {
   public form!: FormGroup;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.buildForm();
@@ -33,6 +34,9 @@ export class LoginComponent implements OnInit {
       .subscribe({
         next: (res: UserToken) => {
           console.log(res);
+          localStorage.setItem('USER_TOKEN', res.token);
+          localStorage.setItem('USER', JSON.stringify(res.user));
+          this.router.navigate(['/home']);
         },
         error: (error) => {
           console.log(error);

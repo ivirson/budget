@@ -27,6 +27,7 @@
             "styles": [
               "node_modules/bootstrap/scss/bootstrap.scss",
               "@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/assets/themes/css/theme.scss",
               "src/styles.scss"
             ],
             "scripts": []
@@ -86,6 +87,7 @@
             "styles": [
               "node_modules/bootstrap/scss/bootstrap.scss",
               "@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/assets/themes/css/theme.scss",
               "src/styles.scss"
             ],
             "scripts": []
