@@ -10,8 +10,8 @@ import { CreditCard } from '../models/credit-card.model';
 export class HomeService {
   constructor(private http: HttpClient) {}
 
-  public getCreditCards(): Observable<CreditCard> {
+  public getCreditCards(): Observable<CreditCard[]> {
     const user: User = JSON.parse(localStorage.getItem('USER') || '');
-    return this.http.get<CreditCard>(`users/${user.id}/credit-cards`);
+    return this.http.get<CreditCard[]>(`users/${user.id}/credit-cards`);
   }
 }

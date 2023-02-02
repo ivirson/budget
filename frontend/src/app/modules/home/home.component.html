@@ -1,1 +1,68 @@
-<app-credit-cards></app-credit-cards>
+<section id="home" *ngIf="currentStep === steps.HOME">HOME</section>
+<section id="cards" *ngIf="currentStep === steps.CARDS">
+  <app-credit-cards></app-credit-cards>
+</section>
+<section id="bank_accounts" *ngIf="currentStep === steps.BANK_ACCOUNTS">
+  BANK ACCOUNTS
+</section>
+<section id="expenses" *ngIf="currentStep === steps.EXPENSES">EXPENSES</section>
+<section id="graphics" *ngIf="currentStep === steps.GRAPHICS">GRAPHICS</section>
+<div class="footer-menu">
+  <div class="row">
+    <div
+      class="menu-item col d-flex justify-content-center"
+      (click)="setHomeStep(steps.CARDS)"
+      [ngClass]="{ 'active-menu': currentStep === steps.CARDS }"
+    >
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Credit Cards"
+        fontIcon="credit_card"
+      ></mat-icon>
+    </div>
+    <div
+      class="menu-item col d-flex justify-content-center"
+      (click)="setHomeStep(steps.BANK_ACCOUNTS)"
+      [ngClass]="{ 'active-menu': currentStep === steps.BANK_ACCOUNTS }"
+    >
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Bank Accounts"
+        fontIcon="account_balance_wallet"
+      ></mat-icon>
+    </div>
+    <div
+      class="menu-item col d-flex justify-content-center"
+      (click)="setHomeStep(steps.HOME)"
+      [ngClass]="{ 'active-menu': currentStep === steps.HOME }"
+    >
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Home"
+        fontIcon="home"
+      ></mat-icon>
+    </div>
+    <div
+      class="menu-item col d-flex justify-content-center"
+      (click)="setHomeStep(steps.EXPENSES)"
+      [ngClass]="{ 'active-menu': currentStep === steps.EXPENSES }"
+    >
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Evolution"
+        fontIcon="attach_money"
+      ></mat-icon>
+    </div>
+    <div
+      class="menu-item col d-flex justify-content-center"
+      (click)="setHomeStep(steps.GRAPHICS)"
+      [ngClass]="{ 'active-menu': currentStep === steps.GRAPHICS }"
+    >
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Evolution"
+        fontIcon="bar_chart"
+      ></mat-icon>
+    </div>
+  </div>
+</div>

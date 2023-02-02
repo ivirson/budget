@@ -1,0 +1,15 @@
+.footer-menu {
+  background-color: var(--on-primary-light);
+  color: var(--on-secondary-container-light);
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+
+  .menu-item {
+    padding: 1rem 0;
+  }
+
+  .active-menu {
+    background-color: var(--md-ref-palette-neutral90);
+  }
+}

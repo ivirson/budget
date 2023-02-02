@@ -1,0 +1,15 @@
+@media (hover: none) {
+  .mat-expansion-panel:not(.mat-expanded):not([aria-disabled="true"])
+    .mat-expansion-panel-header:hover {
+    background: inherit;
+  }
+}
+
+.flag-icon {
+  width: 3rem;
+}
+
+.mat-expansion-panel-header-description {
+  flex-grow: 0;
+  margin-right: 0;
+}

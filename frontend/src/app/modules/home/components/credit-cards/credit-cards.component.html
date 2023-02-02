@@ -1,3 +1,33 @@
-<p>
-  credit-cards works!
-</p>
+<div class="container pt-5 pb-3">
+  <h1 class="section-title">Cartões</h1>
+  <mat-accordion>
+    <mat-expansion-panel
+      hideToggle
+      *ngFor="let card of creditCards"
+      (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false"
+      [ngStyle]="{ background: card.color }"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{ card.alias }}</mat-panel-title>
+        <mat-panel-description>
+          <img
+            class="flag-icon"
+            src="/assets/images/{{ card.flag }}.png"
+            alt=""
+          />
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p><strong>Dia de Vencimento: </strong>{{ card.dueDate }}</p>
+      <p>
+        <strong>Dia de fechamento da fatura: </strong
+        >{{ card.invoiceClosingDate }}
+      </p>
+      <p><strong>Limite: </strong>{{ card.limit | currency : "BRL" }}</p>
+      <p>
+        <strong>Limite atual: </strong
+        >{{ card.availableLimit | currency : "BRL" }}
+      </p>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
