@@ -194,7 +194,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"alias\": \"C6 Ivirson\",\r\n    \"dueDate\": 20,\r\n    \"invoiceClosingDate\": 11,\r\n    \"limit\": 500,\r\n    \"flag\": \"Visa\",\r\n    \"color\": \"#0A0A0A\"\r\n}",
+							"raw": "{\r\n    \"alias\": \"BB\",\r\n    \"dueDate\": 10,\r\n    \"invoiceClosingDate\": 1,\r\n    \"limit\": 1000,\r\n    \"flag\": \"Visa\",\r\n    \"color\": \"#E8E51A\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -229,7 +229,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"alias\": \"Nubank\"\r\n}",
+							"raw": "{\r\n    \"color\": \"#530769\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -322,7 +322,7 @@
 							}
 						],
 						"url": {
-							"raw": "localhost:5000/users/f7cddfb1-d55e-45bc-bde0-14041142301c/bank-accounts/09cf65a8-65e9-4113-a8a3-7201ae6bc0e2",
+							"raw": "localhost:5000/users/f7cddfb1-d55e-45bc-bde0-14041142301c/bank-accounts/4314cc93-b3d6-401c-a09d-f7ff8b09d180",
 							"host": [
 								"localhost"
 							],
@@ -331,7 +331,7 @@
 								"users",
 								"f7cddfb1-d55e-45bc-bde0-14041142301c",
 								"bank-accounts",
-								"09cf65a8-65e9-4113-a8a3-7201ae6bc0e2"
+								"4314cc93-b3d6-401c-a09d-f7ff8b09d180"
 							]
 						}
 					},
@@ -396,7 +396,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:5000/users/f7cddfb1-d55e-45bc-bde0-14041142301c/bank-accounts/09cf65a8-65e9-4113-a8a3-7201ae6bc0e2",
+							"raw": "localhost:5000/users/f7cddfb1-d55e-45bc-bde0-14041142301c/bank-accounts/4314cc93-b3d6-401c-a09d-f7ff8b09d180",
 							"host": [
 								"localhost"
 							],
@@ -405,7 +405,7 @@
 								"users",
 								"f7cddfb1-d55e-45bc-bde0-14041142301c",
 								"bank-accounts",
-								"09cf65a8-65e9-4113-a8a3-7201ae6bc0e2"
+								"4314cc93-b3d6-401c-a09d-f7ff8b09d180"
 							]
 						}
 					},
@@ -433,6 +433,59 @@
 								"f7cddfb1-d55e-45bc-bde0-14041142301c",
 								"bank-accounts",
 								"cbdefa85-81ee-4957-87d0-00e67eac7216"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "FLAGS",
+			"item": [
+				{
+					"name": "FLAGS",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjNjc5NDQ3Yi1jZjVjLTRiMmQtYjQ1OC1lMWY3MmJlZTRlYWUiLCJlbWFpbCI6Iml2aS5kYWx0cm9AZ21haWwuY29tIiwiaWF0IjoxNjc0NDg1OTYwfQ.RIPRdFoQxn8xFKKM3NBpxO2XU3qvHh5iQcP3NeCq_Ww",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:5000/flags",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"flags"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FLAGS BY ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:5000/flags",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"flags"
 							]
 						}
 					},
