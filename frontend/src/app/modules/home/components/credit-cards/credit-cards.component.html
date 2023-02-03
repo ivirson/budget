@@ -6,10 +6,12 @@
       *ngFor="let card of creditCards"
       (opened)="panelOpenState = true"
       (closed)="panelOpenState = false"
-      [ngStyle]="{ background: card.color }"
+      [ngStyle]="{ background: card.color, color: card.fontColor }"
     >
       <mat-expansion-panel-header>
-        <mat-panel-title>{{ card.alias }}</mat-panel-title>
+        <mat-panel-title [ngStyle]="{ color: card.fontColor }">{{
+          card.alias
+        }}</mat-panel-title>
         <mat-panel-description>
           <img
             class="flag-icon"
@@ -18,16 +20,49 @@
           />
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <p><strong>Dia de Vencimento: </strong>{{ card.dueDate }}</p>
-      <p>
-        <strong>Dia de fechamento da fatura: </strong
-        >{{ card.invoiceClosingDate }}
+      <p class="d-flex justify-content-between">
+        <span>Dia de Vencimento: </span>
+        <span class="info-value">{{ card.dueDate }}</span>
       </p>
-      <p><strong>Limite: </strong>{{ card.limit | currency : "BRL" }}</p>
-      <p>
-        <strong>Limite atual: </strong
-        >{{ card.availableLimit | currency : "BRL" }}
+      <p class="d-flex justify-content-between">
+        <span>Dia de fechamento da fatura: </span>
+        <span class="info-value">{{ card.invoiceClosingDate }}</span>
       </p>
+      <p class="d-flex justify-content-between">
+        <span>Limite: </span>
+        <span class="info-value">{{ card.limit | currency : "BRL" }}</span>
+      </p>
+      <p class="d-flex justify-content-between">
+        <span>Limite atual: </span>
+        <span class="info-value">{{
+          card.availableLimit | currency : "BRL"
+        }}</span>
+      </p>
+      <div class="card-actions d-flex justify-content-end">
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="menu"
+          aria-label="Card actions"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="addOrEditCreditCard(card)">
+            Editar
+          </button>
+          <button mat-menu-item (click)="deleteCard(card.id)">Excluir</button>
+        </mat-menu>
+      </div>
     </mat-expansion-panel>
   </mat-accordion>
+  <div class="action-button">
+    <button
+      mat-fab
+      color="primary"
+      aria-label="Add credit card button"
+      (click)="addOrEditCreditCard()"
+    >
+      <mat-icon>add_card</mat-icon>
+    </button>
+  </div>
 </div>

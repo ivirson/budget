@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { first } from 'rxjs';
+import { SnackBarService } from 'src/app/shared/services/snack-bar.service';
 import { UserToken } from '../../models/user-token.model';
 import { AuthService } from '../../services/auth.service';
 
@@ -13,7 +14,11 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent implements OnInit {
   public form!: FormGroup;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private snackBarService: SnackBarService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.buildForm();
@@ -33,13 +38,12 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe({
         next: (res: UserToken) => {
-          console.log(res);
           localStorage.setItem('USER_TOKEN', res.token);
           localStorage.setItem('USER', JSON.stringify(res.user));
           this.router.navigate(['/home']);
         },
-        error: (error) => {
-          console.log(error);
+        error: (err) => {
+          this.snackBarService.openSnackBar();
         },
       });
   }

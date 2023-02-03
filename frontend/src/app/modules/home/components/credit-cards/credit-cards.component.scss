@@ -13,3 +13,21 @@
   flex-grow: 0;
   margin-right: 0;
 }
+
+.info-value {
+  font-weight: bold;
+  margin-right: 1rem;
+}
+
+::ng-deep .mat-expansion-panel-header,
+::ng-deep .mat-expansion-panel-content {
+  font-size: 1rem !important;
+}
+
+.action-button {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 4.5rem;
+  margin-right: 1rem;
+}

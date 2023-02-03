@@ -7,5 +7,6 @@ export interface CreditCard {
   availableLimit?: number;
   flag: string;
   color: string;
+  fontColor: string;
   userId: string;
 }

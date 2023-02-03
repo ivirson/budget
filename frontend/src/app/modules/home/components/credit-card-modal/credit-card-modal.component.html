@@ -1,0 +1,47 @@
+<h1 mat-dialog-title>
+  <span>{{ card ? "Editar" : "Adicionar" }}</span> Cartão de crédito
+</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div mat-dialog-content>
+    <mat-form-field appearance="outline">
+      <mat-label>Apelido</mat-label>
+      <input matInput formControlName="alias" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Dia de vencimento</mat-label>
+      <input matInput formControlName="dueDate" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Dia de fechamento de fatura</mat-label>
+      <input matInput formControlName="invoiceClosingDate" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Limite total</mat-label>
+      <input matInput formControlName="limit" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Bandeira</mat-label>
+      <mat-select formControlName="flag">
+        <mat-option
+          *ngFor="let flag of creditCardFlags"
+          [value]="flag.imageName"
+        >
+          <img
+            class="option-image"
+            src="assets/images/{{ flag.imageName }}.png"
+            alt=""
+          />
+          {{ flag.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Cor</mat-label>
+      <input type="color" matInput formControlName="color" />
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="closeModal()">Cancelar</button>
+    <button type="submit" mat-button cdkFocusInitial>Salvar</button>
+  </div>
+</form>
