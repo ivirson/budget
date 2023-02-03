@@ -1,6 +1,6 @@
 -- SQLite
 -- SELECT * FROM users;
--- DELETE FROM users;
+-- DELETE FROM creditCards;
 SELECT * FROM creditCards;
 
 -- INSERT INTO users (name, email, password)
@@ -9,6 +9,7 @@ SELECT * FROM creditCards;
 
 UPDATE users SET avatar = null WHERE id = "f7cddfb1-d55e-45bc-bde0-14041142301c"
 
+-- DROP TABLE IF EXISTS creditCards;
 -- DROP TABLE IF EXISTS flags;
 
 -- INSERT INTO flags (imageName, createdAt, updatedAt)

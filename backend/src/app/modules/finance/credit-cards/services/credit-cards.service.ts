@@ -40,6 +40,10 @@ export default class CreditCardsService {
 
     creditCard.userId = userId;
     creditCard.availableLimit = creditCard.limit;
+
+    const colorFirstCharacter = creditCard.color.substring(1, 2);
+    creditCard.fontColor = isNaN(colorFirstCharacter) ? "#000000" : "#FFFFFF";
+
     return await creditCardsRepository.save(creditCard);
   }
 

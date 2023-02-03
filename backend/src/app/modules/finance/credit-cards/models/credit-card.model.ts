@@ -20,6 +20,7 @@ export default class CreditCard extends Model<
   declare availableLimit?: number;
   declare flag: string;
   declare color: string;
+  declare fontColor: string;
   declare userId: string;
   declare createdAt?: CreationOptional<Date>;
   declare updatedAt?: CreationOptional<Date>;
@@ -36,6 +37,7 @@ CreditCard.init(
     alias: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
     dueDate: {
       type: NUMBER,
@@ -52,6 +54,7 @@ CreditCard.init(
     availableLimit: DataTypes.NUMBER,
     flag: DataTypes.STRING,
     color: DataTypes.STRING,
+    fontColor: DataTypes.STRING,
     userId: {
       type: DataTypes.UUID,
       allowNull: false,
