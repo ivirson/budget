@@ -6,11 +6,4 @@ import { HomeSteps } from './constants/home-steps.enum';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent {
-  public currentStep: HomeSteps = HomeSteps.HOME;
-  public steps = HomeSteps;
-
-  public setHomeStep(step: HomeSteps): void {
-    this.currentStep = step;
-  }
-}
+export class HomeComponent {}

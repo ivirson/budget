@@ -4,58 +4,43 @@
   <div class="row">
     <div
       class="menu-item col d-flex justify-content-center"
-      routerLink="/home/credit-cards"
-      [ngClass]="{ 'active-menu': currentStep === steps.CARDS }"
+      routerLink="credit-cards"
+      routerLinkActive="active-menu"
+      [routerLinkActiveOptions]="{ exact: true }"
     >
-      <mat-icon
-        aria-hidden="false"
-        aria-label="Credit Cards"
-        fontIcon="credit_card"
-      ></mat-icon>
+      <mat-icon>credit_card</mat-icon>
     </div>
     <div
       class="menu-item col d-flex justify-content-center"
-      routerLink="/home/bank-accounts"
-      [ngClass]="{ 'active-menu': currentStep === steps.BANK_ACCOUNTS }"
+      routerLink="bank-accounts"
+      routerLinkActive="active-menu"
+      [routerLinkActiveOptions]="{ exact: true }"
     >
-      <mat-icon
-        aria-hidden="false"
-        aria-label="Bank Accounts"
-        fontIcon="account_balance_wallet"
-      ></mat-icon>
+      <mat-icon>account_balance_wallet</mat-icon>
     </div>
     <div
       class="menu-item col d-flex justify-content-center"
       routerLink="/home"
-      [ngClass]="{ 'active-menu': currentStep === steps.HOME }"
+      routerLinkActive="active-menu"
+      [routerLinkActiveOptions]="{ exact: true }"
     >
-      <mat-icon
-        aria-hidden="false"
-        aria-label="Home"
-        fontIcon="home"
-      ></mat-icon>
+      <mat-icon>home</mat-icon>
     </div>
     <div
       class="menu-item col d-flex justify-content-center"
-      routerLink="/home/expenses"
-      [ngClass]="{ 'active-menu': currentStep === steps.EXPENSES }"
+      routerLink="expenses"
+      routerLinkActive="active-menu"
+      [routerLinkActiveOptions]="{ exact: true }"
     >
-      <mat-icon
-        aria-hidden="false"
-        aria-label="Evolution"
-        fontIcon="attach_money"
-      ></mat-icon>
+      <mat-icon>attach_money</mat-icon>
     </div>
     <div
       class="menu-item col d-flex justify-content-center"
-      routerLink="/home/graphics"
-      [ngClass]="{ 'active-menu': currentStep === steps.GRAPHICS }"
+      routerLink="graphics"
+      routerLinkActive="active-menu"
+      [routerLinkActiveOptions]="{ exact: true }"
     >
-      <mat-icon
-        aria-hidden="false"
-        aria-label="Evolution"
-        fontIcon="bar_chart"
-      ></mat-icon>
+      <mat-icon>bar_chart</mat-icon>
     </div>
   </div>
 </div>
