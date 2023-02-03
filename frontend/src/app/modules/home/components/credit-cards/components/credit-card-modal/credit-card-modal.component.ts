@@ -2,10 +2,10 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { first } from 'rxjs';
+import { CreditCardFlag } from 'src/app/modules/home/models/credit-card-flag.model';
 import { SnackBarService } from 'src/app/shared/services/snack-bar.service';
-import { CreditCardFlag } from '../../models/credit-card-flag.model';
-import { CreditCard } from '../../models/credit-card.model';
-import { HomeService } from '../../services/home.service';
+import { CreditCard } from '../../../../models/credit-card.model';
+import { HomeService } from '../../../../services/home.service';
 
 @Component({
   selector: 'app-credit-card-modal',

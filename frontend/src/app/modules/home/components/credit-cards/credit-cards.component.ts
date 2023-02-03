@@ -4,7 +4,7 @@ import { first } from 'rxjs';
 import { SnackBarService } from 'src/app/shared/services/snack-bar.service';
 import { CreditCard } from '../../models/credit-card.model';
 import { HomeService } from '../../services/home.service';
-import { CreditCardModalComponent } from '../credit-card-modal/credit-card-modal.component';
+import { CreditCardModalComponent } from './components/credit-card-modal/credit-card-modal.component';
 
 @Component({
   selector: 'app-credit-cards',
