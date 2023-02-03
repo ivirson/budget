@@ -13,6 +13,7 @@ export default class Flag extends Model<
 > {
   declare id: CreationOptional<string>;
   declare imageName: string;
+  declare name: string;
   declare createdAt?: CreationOptional<Date>;
   declare updatedAt?: CreationOptional<Date>;
 }
@@ -25,6 +26,11 @@ Flag.init(
       primaryKey: true,
     },
     imageName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
