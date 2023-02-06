@@ -7,25 +7,23 @@ import {
 } from "sequelize";
 import database from "../../../../database/db";
 
-export default class CreditCard extends Model<
-  InferAttributes<CreditCard>,
-  InferCreationAttributes<CreditCard>
+export default class CreditCardPurchase extends Model<
+  InferAttributes<CreditCardPurchase>,
+  InferCreationAttributes<CreditCardPurchase>
 > {
   declare id: CreationOptional<string>;
-  declare alias: string;
-  declare dueDate: Date;
-  declare invoiceClosingDate: Date;
-  declare limit: number;
-  declare availableLimit?: number;
-  declare flag: string;
-  declare color: string;
-  declare fontColor: string;
-  declare userId: string;
+  declare description: string;
+  declare creditCardId: string;
+  declare isInstallments: boolean;
+  declare isFixed: boolean;
+  declare value: number;
+  declare firstBill: number;
+  declare date: Date;
   declare createdAt?: CreationOptional<Date>;
   declare updatedAt?: CreationOptional<Date>;
 }
 
-CreditCard.init(
+CreditCardPurchase.init(
   {
     id: {
       type: DataTypes.UUID,
@@ -33,34 +31,38 @@ CreditCard.init(
       allowNull: false,
       primaryKey: true,
     },
-    alias: {
+    description: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
     },
-    dueDate: {
+    creditCardId: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    isInstallments: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
+    isFixed: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
+    value: {
       type: DataTypes.NUMBER,
       allowNull: false,
     },
-    invoiceClosingDate: {
+    firstBill: {
       type: DataTypes.NUMBER,
       allowNull: false,
     },
-    limit: {
-      type: DataTypes.NUMBER,
-      allowNull: false,
-    },
-    availableLimit: DataTypes.NUMBER,
-    flag: DataTypes.STRING,
-    color: DataTypes.STRING,
-    fontColor: DataTypes.STRING,
-    userId: {
-      type: DataTypes.UUID,
+    date: {
+      type: DataTypes.DATE,
       allowNull: false,
     },
   },
   {
     sequelize: database,
-    modelName: "CreditCard",
+    modelName: "CreditCardPurchase",
   }
 );
